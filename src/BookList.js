@@ -16,9 +16,7 @@ class BookList extends Component {
     const filteredBooks = this.props.books.filter(book =>
       `${book.title}`.toLowerCase()
     );
-    const bookTable = filteredBooks.map(book => (
-      <BookTable key={book.title} book={book} />
-    ));
+    const bookTable = <BookTable books={filteredBooks} />;
 
     return (
       <div>
