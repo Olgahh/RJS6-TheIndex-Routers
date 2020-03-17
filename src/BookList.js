@@ -14,7 +14,7 @@ class BookList extends Component {
 
   render() {
     const filteredBooks = this.props.books.filter(book =>
-      `${book.title}`.toLowerCase()
+      `${book.title}`.toLowerCase().includes(this.state.query)
     );
     const bookTable = <BookTable books={filteredBooks} />;
 
