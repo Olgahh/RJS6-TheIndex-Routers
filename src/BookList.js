@@ -14,15 +14,18 @@ class BookList extends Component {
 
   render() {
     const filteredBooks = this.props.books.filter(book =>
-      `${book.title}`.toLowerCase().includes(this.state.query)
+      book.title.toLowerCase().includes(this.state.query)
     );
-    const bookTable = <BookTable books={filteredBooks} />;
-
+    const bookColor = this.props.match.params.bookColor;
+    if (bookColor)
+      filteredBooks = filteredBooks.filter(book => book.color === bookColor);
     return (
       <div>
         <h3>Books</h3>
         <SearchBar handleFilter={this.setQuery} />
-        <div className="row">{bookTable}</div>
+        <div className="row">
+          <BookTable books={filteredBooks} />
+        </div>
       </div>
     );
   }

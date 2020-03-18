@@ -12,7 +12,7 @@ import BookList from "./BookList";
 const instance = axios.create({
   baseURL: "https://the-index-api.herokuapp.com"
 });
-
+//Set up for axios request, to avoid misspelling the domain name
 class App extends Component {
   state = {
     authors: [],
@@ -58,10 +58,15 @@ class App extends Component {
               <AuthorList {...props} authors={this.state.authors} />
             )}
           />
+          {/* <Route
+            path="/authors/"
+            render={props => <BookList {...props} books={this.state.books} />}
+          /> */}
           <Route
-            path="/books/"
+            path="/books/:bookColor?"
             render={props => <BookList {...props} books={this.state.books} />}
           />
+          {/* // ... copying props */}
         </Switch>
       );
     }
